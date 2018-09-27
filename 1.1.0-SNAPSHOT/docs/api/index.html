@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charSet="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>API · Coursier</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="generator" content="Docusaurus">
+  <meta name="description" content="Add to your `build.sbt`">
+  <meta name="docsearch:language" content="en">
+  <meta property="og:title" content="API · Coursier">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://coursier.github.io/index.html">
+  <meta property="og:description" content="Add to your `build.sbt`">
+  <meta name="twitter:card" content="summary">
+  <link rel="shortcut icon" href="../../../undefined">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+  <script type="text/javascript" src="https://buttons.github.io/buttons.js"></script>
+  <link rel="stylesheet" href="../../../css/main.css">
+ </head>
+ <body class="sideNavVisible separateOnPageNav">
+  <div class="fixedHeaderContainer">
+   <div class="headerWrapper wrapper">
+    <header>
+     <a href="../../../index.html"><h2 class="headerTitle">Coursier</h2></a>
+     <div class="navigationWrapper navigationSlider">
+      <nav class="slidingNav">
+       <ul class="nav-site nav-site-internal">
+        <li class="siteNavGroupActive"><a href="../../../docs/intro" target="_self">Docs</a></li>
+        <li class=""><a href="https://github.com/coursier/coursier" target="_self">GitHub</a></li>
+       </ul>
+      </nav>
+     </div>
+    </header>
+   </div>
+  </div>
+  <div class="navPusher">
+   <div class="docMainWrapper wrapper">
+    <div class="container docsNavContainer" id="docsNav">
+     <nav class="toc">
+      <div class="toggleNav">
+       <section class="navWrapper wrapper">
+        <div class="navBreadcrumb wrapper">
+         <div class="navToggle" id="navToggler">
+          <i></i>
+         </div>
+         <h2><i>›</i><span>Quick start</span></h2>
+         <div class="tocToggler" id="tocToggler">
+          <i class="icon-toc"></i>
+         </div>
+        </div>
+        <div class="navGroups">
+         <div class="navGroup">
+          <h3 class="navGroupCategoryTitle">Quick start</h3>
+          <ul>
+           <li class="navListItem"><a class="navItem" href="../../../docs/intro">Intro</a></li>
+           <li class="navListItem navListItemActive"><a class="navItem" href="../../../docs/api">API</a></li>
+          </ul>
+         </div>
+        </div>
+       </section>
+      </div>
+      <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script>
+     </nav>
+    </div>
+    <div class="container mainContainer docMainContainer">
+     <div class="wrapper">
+      <div class="post">
+       <header class="postHeader">
+        <h1 class="postHeaderTitle">API</h1>
+       </header>
+       <article>
+        <div>
+         <span><p>Add to your <code>build.sbt</code></p> <pre><code class="hljs css language-scala">libraryDependencies ++= <span class="hljs-type">Seq</span>(
+  <span class="hljs-string">"io.get-coursier"</span> %% <span class="hljs-string">"coursier"</span> % <span class="hljs-string">"1.0.3"</span>,
+  <span class="hljs-string">"io.get-coursier"</span> %% <span class="hljs-string">"coursier-cache"</span> % <span class="hljs-string">"1.0.3"</span>
+)
+</code></pre> <p>Note that the examples below are validated against the current sources of coursier. You may want to read the <a href="https://github.com/coursier/coursier/blob/v1.1.0-M7/README.md#api">documentation of the latest release</a> of coursier instead.</p> <p>Add an import for coursier,</p> <pre><code class="hljs css language-scala"><span class="hljs-keyword">import</span> coursier._
+</code></pre> <p>To resolve dependencies, first create a <code>Resolution</code> case class with your dependencies in it,</p> <pre><code class="hljs css language-scala"><span class="hljs-keyword">val</span> start = <span class="hljs-type">Resolution</span>(
+  <span class="hljs-type">Set</span>(
+    <span class="hljs-type">Dependency</span>(
+      <span class="hljs-type">Module</span>(<span class="hljs-string">"org.scalaz"</span>, <span class="hljs-string">"scalaz-core_2.11"</span>), <span class="hljs-string">"7.2.3"</span>
+    ),
+    <span class="hljs-type">Dependency</span>(
+      <span class="hljs-type">Module</span>(<span class="hljs-string">"org.typelevel"</span>, <span class="hljs-string">"cats-core_2.11"</span>), <span class="hljs-string">"0.6.0"</span>
+    )
+  )
+)
+</code></pre> <p>Create a fetch function able to get things from a few repositories via a local cache,</p> <pre><code class="hljs css language-scala"><span class="hljs-keyword">import</span> coursier.util.<span class="hljs-type">Task</span>
+
+<span class="hljs-keyword">val</span> repositories = <span class="hljs-type">Seq</span>(
+  <span class="hljs-type">Cache</span>.ivy2Local,
+  <span class="hljs-type">MavenRepository</span>(<span class="hljs-string">"https://repo1.maven.org/maven2"</span>)
+)
+
+<span class="hljs-keyword">val</span> fetch = <span class="hljs-type">Fetch</span>.from(repositories, <span class="hljs-type">Cache</span>.fetch[<span class="hljs-type">Task</span>]())
+</code></pre> <p>Then run the resolution per-se,</p> <pre><code class="hljs css language-scala"><span class="hljs-keyword">import</span> scala.concurrent.<span class="hljs-type">ExecutionContext</span>.<span class="hljs-type">Implicits</span>.global
+
+<span class="hljs-keyword">val</span> resolution = start.process.run(fetch).unsafeRun()
+</code></pre> <p>That will fetch and use metadata.</p> <p>Check for errors in</p> <pre><code class="hljs css language-scala"><span class="hljs-keyword">val</span> errors: <span class="hljs-type">Seq</span>[((<span class="hljs-type">Module</span>, <span class="hljs-type">String</span>), <span class="hljs-type">Seq</span>[<span class="hljs-type">String</span>])] = resolution.errors
+</code></pre> <p>These would mean that the resolution wasn't able to get metadata about some dependencies.</p> <p>Then fetch and get local copies of the artifacts themselves (the JARs) with</p> <pre><code class="hljs css language-scala"><span class="hljs-keyword">import</span> java.io.<span class="hljs-type">File</span>
+<span class="hljs-keyword">import</span> coursier.util.<span class="hljs-type">Gather</span>
+
+<span class="hljs-keyword">val</span> localArtifacts: <span class="hljs-type">Seq</span>[<span class="hljs-type">Either</span>[<span class="hljs-type">FileError</span>, <span class="hljs-type">File</span>]] = <span class="hljs-type">Gather</span>[<span class="hljs-type">Task</span>].gather(
+  resolution.artifacts.map(<span class="hljs-type">Cache</span>.file[<span class="hljs-type">Task</span>](_).run)
+).unsafeRun()
+</code></pre> <p>The default global cache used by coursier is <code>~/.coursier/cache/v1</code>. E.g. the artifact at <code>https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.11.8/scala-library-2.11.8.jar</code> will land in <code>~/.coursier/cache/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.11.8/scala-library-2.11.8.jar</code>.</p> <p>From the SBT plugin, the default repositories are the ones provided by SBT (typically Central or JFrog, and <code>~/.ivy2/local</code>). From the CLI tools, these are Central (<code>https://repo1.maven.org/maven2</code>) and <code>~/.ivy2/local</code>. From the API, these are specified manually - you are encouraged to use those too.</p> </span>
+        </div>
+       </article>
+      </div>
+      <div class="docs-prevnext">
+       <a class="docs-prev button" href="../../../docs/intro"><span class="arrow-prev">← </span><span>Previous</span></a>
+      </div>
+     </div>
+    </div>
+    <nav class="onPageNav docOnPageNav"></nav>
+   </div>
+   <footer class="nav-footer" id="footer">
+    <section class="sitemap">
+     <a href="../../../index.html" class="nav-home"></a>
+     <div>
+      <h5>Docs</h5>
+      <a href="../../../docs/en/api.html">API</a>
+     </div>
+     <div>
+      <h5>Community</h5>
+      <a href="https://gitter.im/coursier/coursier">Gitter room</a>
+     </div>
+     <div>
+      <h5>More</h5>
+      <a href="https://github.com/coursier/coursier">GitHub</a>
+      <a class="github-button" data-icon="octicon-star" data-count-href="/coursier/coursier/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a>
+     </div>
+    </section>
+    <section class="copyright">
+     Copyright © 2018 Alexandre Archambault and coursier contributors
+    </section>
+   </footer>
+  </div>
+ </body>
+</html>
