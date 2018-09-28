@@ -3,15 +3,15 @@
  <head>
   <meta charSet="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Intro · Coursier</title>
+  <title>sbt plugin · Coursier</title>
   <meta name="viewport" content="width=device-width">
   <meta name="generator" content="Docusaurus">
-  <meta name="description" content="# coursier">
+  <meta name="description" content="Enable the sbt plugin by adding">
   <meta name="docsearch:language" content="en">
-  <meta property="og:title" content="Intro · Coursier">
+  <meta property="og:title" content="sbt plugin · Coursier">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://coursier.github.io/coursier/index.html">
-  <meta property="og:description" content="# coursier">
+  <meta property="og:description" content="Enable the sbt plugin by adding">
   <meta name="twitter:card" content="summary">
   <link rel="shortcut icon" href="../../undefined">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
@@ -26,7 +26,7 @@
      <div class="navigationWrapper navigationSlider">
       <nav class="slidingNav">
        <ul class="nav-site nav-site-internal">
-        <li class="siteNavGroupActive siteNavItemActive"><a href="index.html" target="_self">Docs</a></li>
+        <li class="siteNavGroupActive"><a href="../intro/index.html" target="_self">Docs</a></li>
         <li class=""><a href="https://github.com/coursier/coursier" target="_self">GitHub</a></li>
        </ul>
       </nav>
@@ -53,8 +53,8 @@
          <div class="navGroup">
           <h3 class="navGroupCategoryTitle">Quick start</h3>
           <ul>
-           <li class="navListItem navListItemActive"><a class="navItem" href="index.html">Intro</a></li>
-           <li class="navListItem"><a class="navItem" href="../quick-start-sbt/index.html">sbt plugin</a></li>
+           <li class="navListItem"><a class="navItem" href="../intro/index.html">Intro</a></li>
+           <li class="navListItem navListItemActive"><a class="navItem" href="index.html">sbt plugin</a></li>
            <li class="navListItem"><a class="navItem" href="../quick-start-cli/index.html">Command-line</a></li>
            <li class="navListItem"><a class="navItem" href="../quick-start-api/index.html">API</a></li>
           </ul>
@@ -140,25 +140,23 @@
      <div class="wrapper">
       <div class="post">
        <header class="postHeader">
-        <a class="edit-page-link button" href="https://github.com/coursier/coursier/edit/master/doc/docs/intro.md" target="_blank" rel="noreferrer noopener">Edit</a>
+        <a class="edit-page-link button" href="https://github.com/coursier/coursier/edit/master/doc/docs/quick-start-sbt.md" target="_blank" rel="noreferrer noopener">Edit</a>
+        <h1 class="postHeaderTitle">sbt plugin</h1>
        </header>
        <article>
         <div>
-         <span><h1><a class="anchor" aria-hidden="true" id="coursier"></a><a href="index.html#coursier" aria-hidden="true" class="hash-link">
-            <svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16">
-             <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
-            </svg></a>coursier</h1> <p><em>Pure Scala Artifact Fetching</em></p> <p>A Scala library to fetch dependencies from Maven / Ivy repositories</p> <p><em>This is the documentation for version 1.1.0-SNAPSHOT</em>.</p> <p><em>coursier</em> is a dependency resolver / fetcher <em>à la</em> Maven / Ivy, entirely rewritten from scratch in Scala. It aims at being fast and easy to embed in other contexts. Its core embraces functional programming principles.</p> <p>It handles many features of the Maven model, and is able to fetch metadata and artifacts from both Maven and Ivy repositories. It handles parallel downloads out-of-the-box without resorting to global locks.</p> <p>It can be used <a href="../quick-start-sbt/index.html">as an sbt plugin</a>, making it handle most dependency resolutions in sbt.</p> <p>Its command-line tool allows to</p> 
+         <span><p>Enable the sbt plugin by adding</p> <pre><code class="hljs css language-scala">addSbtPlugin(<span class="hljs-string">"io.get-coursier"</span> % <span class="hljs-string">"sbt-coursier"</span> % <span class="hljs-string">"1.1.0-SNAPSHOT"</span>)
+</code></pre> <p>either</p> 
           <ul> 
-           <li>easily list the transitive dependencies of applications or libraries,</li> 
-           <li>download and list their artifacts,</li> 
-           <li>run applications published via Maven / Ivy repositories,</li> 
-           <li>and many other things.</li> 
-          </ul> <p>Lastly, it can be used as a library via its <a href="../quick-start-api/index.html">API</a> and has a Scala JS <a href="../scala-js/index.html">demo</a>.</p> </span>
+           <li>to the <code>project/plugins.sbt</code> file of an sbt project, or</li> 
+           <li>to <code>~/.sbt/1.0/plugins/build.sbt</code> (globally, not recommended).</li> 
+          </ul> <p>See <a href="../sbt-coursier/index.html">the dedicated page</a> for more details.</p> <p>The sbt plugin only supports sbt 1.x. See the <a href="https://github.com/coursier/coursier/tree/series/1.0.x">1.0.x versions</a> of coursier for sbt 0.13.x support.</p> </span>
         </div>
        </article>
       </div>
       <div class="docs-prevnext">
-       <a class="docs-next button" href="../quick-start-sbt/index.html"><span>Next</span><span class="arrow-next"> →</span></a>
+       <a class="docs-prev button" href="../intro/index.html"><span class="arrow-prev">← </span><span>Previous</span></a>
+       <a class="docs-next button" href="../quick-start-cli/index.html"><span>Next</span><span class="arrow-next"> →</span></a>
       </div>
      </div>
     </div>

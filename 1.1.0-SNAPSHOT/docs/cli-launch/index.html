@@ -3,15 +3,15 @@
  <head>
   <meta charSet="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Intro · Coursier</title>
+  <title>launch · Coursier</title>
   <meta name="viewport" content="width=device-width">
   <meta name="generator" content="Docusaurus">
-  <meta name="description" content="# coursier">
+  <meta name="description" content="*Direct former README import (possibly not up-to-date)*">
   <meta name="docsearch:language" content="en">
-  <meta property="og:title" content="Intro · Coursier">
+  <meta property="og:title" content="launch · Coursier">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://coursier.github.io/coursier/index.html">
-  <meta property="og:description" content="# coursier">
+  <meta property="og:description" content="*Direct former README import (possibly not up-to-date)*">
   <meta name="twitter:card" content="summary">
   <link rel="shortcut icon" href="../../undefined">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
@@ -26,7 +26,7 @@
      <div class="navigationWrapper navigationSlider">
       <nav class="slidingNav">
        <ul class="nav-site nav-site-internal">
-        <li class="siteNavGroupActive siteNavItemActive"><a href="index.html" target="_self">Docs</a></li>
+        <li class="siteNavGroupActive"><a href="../intro/index.html" target="_self">Docs</a></li>
         <li class=""><a href="https://github.com/coursier/coursier" target="_self">GitHub</a></li>
        </ul>
       </nav>
@@ -44,7 +44,7 @@
          <div class="navToggle" id="navToggler">
           <i></i>
          </div>
-         <h2><i>›</i><span>Quick start</span></h2>
+         <h2><i>›</i><span>Command-line</span></h2>
          <div class="tocToggler" id="tocToggler">
           <i class="icon-toc"></i>
          </div>
@@ -53,7 +53,7 @@
          <div class="navGroup">
           <h3 class="navGroupCategoryTitle">Quick start</h3>
           <ul>
-           <li class="navListItem navListItemActive"><a class="navItem" href="index.html">Intro</a></li>
+           <li class="navListItem"><a class="navItem" href="../intro/index.html">Intro</a></li>
            <li class="navListItem"><a class="navItem" href="../quick-start-sbt/index.html">sbt plugin</a></li>
            <li class="navListItem"><a class="navItem" href="../quick-start-cli/index.html">Command-line</a></li>
            <li class="navListItem"><a class="navItem" href="../quick-start-api/index.html">API</a></li>
@@ -73,7 +73,7 @@
            <li class="navListItem"><a class="navItem" href="../cli-intro/index.html">Intro</a></li>
            <li class="navListItem"><a class="navItem" href="../cli-resolve/index.html">resolve</a></li>
            <li class="navListItem"><a class="navItem" href="../cli-fetch/index.html">fetch</a></li>
-           <li class="navListItem"><a class="navItem" href="../cli-launch/index.html">launch</a></li>
+           <li class="navListItem navListItemActive"><a class="navItem" href="index.html">launch</a></li>
            <li class="navListItem"><a class="navItem" href="../cli-bootstrap/index.html">bootstrap</a></li>
           </ul>
          </div>
@@ -140,25 +140,61 @@
      <div class="wrapper">
       <div class="post">
        <header class="postHeader">
-        <a class="edit-page-link button" href="https://github.com/coursier/coursier/edit/master/doc/docs/intro.md" target="_blank" rel="noreferrer noopener">Edit</a>
+        <a class="edit-page-link button" href="https://github.com/coursier/coursier/edit/master/doc/docs/cli-launch.md" target="_blank" rel="noreferrer noopener">Edit</a>
+        <h1 class="postHeaderTitle">launch</h1>
        </header>
        <article>
         <div>
-         <span><h1><a class="anchor" aria-hidden="true" id="coursier"></a><a href="index.html#coursier" aria-hidden="true" class="hash-link">
-            <svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16">
-             <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
-            </svg></a>coursier</h1> <p><em>Pure Scala Artifact Fetching</em></p> <p>A Scala library to fetch dependencies from Maven / Ivy repositories</p> <p><em>This is the documentation for version 1.1.0-SNAPSHOT</em>.</p> <p><em>coursier</em> is a dependency resolver / fetcher <em>à la</em> Maven / Ivy, entirely rewritten from scratch in Scala. It aims at being fast and easy to embed in other contexts. Its core embraces functional programming principles.</p> <p>It handles many features of the Maven model, and is able to fetch metadata and artifacts from both Maven and Ivy repositories. It handles parallel downloads out-of-the-box without resorting to global locks.</p> <p>It can be used <a href="../quick-start-sbt/index.html">as an sbt plugin</a>, making it handle most dependency resolutions in sbt.</p> <p>Its command-line tool allows to</p> 
+         <span><p><em>Direct former README import (possibly not up-to-date)</em></p> <p>The <code>launch</code> command fetches a set of Maven coordinates it is given, along with their transitive dependencies, then launches the "main <code>main</code> class" from it if it can find one (typically from the manifest of the first coordinates). The main class to launch can also be manually specified with the <code>-M</code> option.</p> <p>For example, it can launch:</p> 
           <ul> 
-           <li>easily list the transitive dependencies of applications or libraries,</li> 
-           <li>download and list their artifacts,</li> 
-           <li>run applications published via Maven / Ivy repositories,</li> 
-           <li>and many other things.</li> 
-          </ul> <p>Lastly, it can be used as a library via its <a href="../quick-start-api/index.html">API</a> and has a Scala JS <a href="../scala-js/index.html">demo</a>.</p> </span>
+           <li><a href="https://github.com/lihaoyi/Ammonite">Ammonite</a> (enhanced Scala REPL),</li> 
+          </ul> <pre><code class="hljs">$ ./coursier launch com.lihaoyi:ammonite_2<span class="hljs-meta">.11</span><span class="hljs-meta">.8</span>:<span class="hljs-number">0.7</span><span class="hljs-meta">.0</span>
+</code></pre> <p>along with the REPLs of various JVM languages like</p> 
+          <ul> 
+           <li>Frege,</li> 
+          </ul> <pre><code class="hljs">$ .<span class="hljs-regexp">/coursier launch -r central -r https:/</span><span class="hljs-regexp">/oss.sonatype.org/</span>content<span class="hljs-regexp">/groups/</span><span class="hljs-keyword">public</span> \
+    org.frege-<span class="hljs-string">lang:</span>frege-repl-<span class="hljs-string">core:</span><span class="hljs-number">1.3</span> -M frege.repl.FregeRepl
+</code></pre> 
+          <ul> 
+           <li>clojure,</li> 
+          </ul> <pre><code class="hljs">$ ./coursier launch org<span class="hljs-selector-class">.clojure</span>:clojure:<span class="hljs-number">1.7</span>.<span class="hljs-number">0</span> -M clojure<span class="hljs-selector-class">.main</span>
+</code></pre> 
+          <ul> 
+           <li>jruby,</li> 
+          </ul> <pre><code class="hljs">$ wget https:<span class="hljs-comment">//raw.githubusercontent.com/jruby/jruby/master/bin/jirb &amp;&amp; \</span>
+  ./coursier launch org<span class="hljs-selector-class">.jruby</span>:jruby:<span class="hljs-number">9.0</span>.<span class="hljs-number">4.0</span> -M org<span class="hljs-selector-class">.jruby</span><span class="hljs-selector-class">.Main</span> -- -- jirb
+</code></pre> 
+          <ul> 
+           <li>jython,</li> 
+          </ul> <pre><code class="hljs">$ ./coursier launch org<span class="hljs-selector-class">.python</span>:jython-standalone:<span class="hljs-number">2.7</span>.<span class="hljs-number">0</span> -M org<span class="hljs-selector-class">.python</span><span class="hljs-selector-class">.util</span><span class="hljs-selector-class">.jython</span>
+</code></pre> 
+          <ul> 
+           <li>Groovy,</li> 
+          </ul> <pre><code class="hljs">$ ./coursier launch org<span class="hljs-selector-class">.codehaus</span><span class="hljs-selector-class">.groovy</span>:groovy-groovysh:<span class="hljs-number">2.4</span>.<span class="hljs-number">5</span> -M org<span class="hljs-selector-class">.codehaus</span><span class="hljs-selector-class">.groovy</span><span class="hljs-selector-class">.tools</span><span class="hljs-selector-class">.shell</span><span class="hljs-selector-class">.Main</span> \
+    commons-cli:commons-cli:<span class="hljs-number">1.3</span>.<span class="hljs-number">1</span>
+</code></pre> <p>etc.</p> <p>and various programs, like</p> 
+          <ul> 
+           <li>ProGuard and its utility Retrace,</li> 
+          </ul> <pre><code class="hljs">$ ./coursier launch net<span class="hljs-selector-class">.sf</span><span class="hljs-selector-class">.proguard</span>:proguard-base:<span class="hljs-number">5.2</span>.<span class="hljs-number">1</span> -M proguard<span class="hljs-selector-class">.ProGuard</span>
+$ ./coursier launch net<span class="hljs-selector-class">.sf</span><span class="hljs-selector-class">.proguard</span>:proguard-retrace:<span class="hljs-number">5.2</span>.<span class="hljs-number">1</span> -M proguard<span class="hljs-selector-class">.retrace</span><span class="hljs-selector-class">.ReTrace</span>
+</code></pre> 
+          <ul> 
+           <li>Wiremock,</li> 
+          </ul> <pre><code class="hljs"><span class="hljs-string">./coursier</span> launch com.github.tomakehurst<span class="hljs-function">:wiremock</span><span class="hljs-function">:1.57</span> -- \
+<span class="hljs-params">--proxy-all=</span><span class="hljs-string">"http://search.twitter.com"</span> <span class="hljs-params">--record-mappings</span> <span class="hljs-params">--verbose</span>
+</code></pre> 
+          <ul> 
+           <li>SQLLine,</li> 
+          </ul> <pre><code class="hljs">$ ./coursier launch \
+  sqlline:sqlline:1.3.0 \
+  org.postgresql:postgresql:42.1.4 \
+  -<span class="ruby">M sqlline.SqlLine -- \ </span>  -<span class="ruby">d org.postgresql.Driver \ </span>  -<span class="ruby">n USERNAME \ </span>  -<span class="ruby">p PASSWORD \ </span>  -<span class="ruby">u <span class="hljs-symbol">jdbc:</span><span class="hljs-symbol">postgresql:</span>/<span class="hljs-regexp">/HOST:PORT/</span>DATABASE </span></code></pre> <p>If you wish to pass additional argument to the artifact being launched, separate them from the coursier's parameters list with the "--", just like in the Wiremock example above.</p> </span>
         </div>
        </article>
       </div>
       <div class="docs-prevnext">
-       <a class="docs-next button" href="../quick-start-sbt/index.html"><span>Next</span><span class="arrow-next"> →</span></a>
+       <a class="docs-prev button" href="../cli-fetch/index.html"><span class="arrow-prev">← </span><span>Previous</span></a>
+       <a class="docs-next button" href="../cli-bootstrap/index.html"><span>Next</span><span class="arrow-next"> →</span></a>
       </div>
      </div>
     </div>

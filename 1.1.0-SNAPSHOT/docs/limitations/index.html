@@ -3,15 +3,15 @@
  <head>
   <meta charSet="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Intro · Coursier</title>
+  <title>Limitations · Coursier</title>
   <meta name="viewport" content="width=device-width">
   <meta name="generator" content="Docusaurus">
-  <meta name="description" content="# coursier">
+  <meta name="description" content="*Direct former README import (possibly not up-to-date)*">
   <meta name="docsearch:language" content="en">
-  <meta property="og:title" content="Intro · Coursier">
+  <meta property="og:title" content="Limitations · Coursier">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://coursier.github.io/coursier/index.html">
-  <meta property="og:description" content="# coursier">
+  <meta property="og:description" content="*Direct former README import (possibly not up-to-date)*">
   <meta name="twitter:card" content="summary">
   <link rel="shortcut icon" href="../../undefined">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
@@ -26,7 +26,7 @@
      <div class="navigationWrapper navigationSlider">
       <nav class="slidingNav">
        <ul class="nav-site nav-site-internal">
-        <li class="siteNavGroupActive siteNavItemActive"><a href="index.html" target="_self">Docs</a></li>
+        <li class="siteNavGroupActive"><a href="../intro/index.html" target="_self">Docs</a></li>
         <li class=""><a href="https://github.com/coursier/coursier" target="_self">GitHub</a></li>
        </ul>
       </nav>
@@ -44,7 +44,7 @@
          <div class="navToggle" id="navToggler">
           <i></i>
          </div>
-         <h2><i>›</i><span>Quick start</span></h2>
+         <h2><i>›</i><span>Other</span></h2>
          <div class="tocToggler" id="tocToggler">
           <i class="icon-toc"></i>
          </div>
@@ -53,7 +53,7 @@
          <div class="navGroup">
           <h3 class="navGroupCategoryTitle">Quick start</h3>
           <ul>
-           <li class="navListItem navListItemActive"><a class="navItem" href="index.html">Intro</a></li>
+           <li class="navListItem"><a class="navItem" href="../intro/index.html">Intro</a></li>
            <li class="navListItem"><a class="navItem" href="../quick-start-sbt/index.html">sbt plugin</a></li>
            <li class="navListItem"><a class="navItem" href="../quick-start-cli/index.html">Command-line</a></li>
            <li class="navListItem"><a class="navItem" href="../quick-start-api/index.html">API</a></li>
@@ -91,7 +91,7 @@
            <li class="navListItem"><a class="navItem" href="../ttl/index.html">TTL</a></li>
            <li class="navListItem"><a class="navItem" href="../json-report/index.html">JSON report</a></li>
            <li class="navListItem"><a class="navItem" href="../extra/index.html">Extra</a></li>
-           <li class="navListItem"><a class="navItem" href="../limitations/index.html">Limitations</a></li>
+           <li class="navListItem navListItemActive"><a class="navItem" href="index.html">Limitations</a></li>
            <li class="navListItem"><a class="navItem" href="../faq/index.html">FAQ</a></li>
           </ul>
          </div>
@@ -140,25 +140,30 @@
      <div class="wrapper">
       <div class="post">
        <header class="postHeader">
-        <a class="edit-page-link button" href="https://github.com/coursier/coursier/edit/master/doc/docs/intro.md" target="_blank" rel="noreferrer noopener">Edit</a>
+        <a class="edit-page-link button" href="https://github.com/coursier/coursier/edit/master/doc/docs/limitations.md" target="_blank" rel="noreferrer noopener">Edit</a>
+        <h1 class="postHeaderTitle">Limitations</h1>
        </header>
        <article>
         <div>
-         <span><h1><a class="anchor" aria-hidden="true" id="coursier"></a><a href="index.html#coursier" aria-hidden="true" class="hash-link">
+         <span><p><em>Direct former README import (possibly not up-to-date)</em></p> <h4><a class="anchor" aria-hidden="true" id="ivy-support-is-poorly-tested"></a><a href="index.html#ivy-support-is-poorly-tested" aria-hidden="true" class="hash-link">
             <svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16">
              <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
-            </svg></a>coursier</h1> <p><em>Pure Scala Artifact Fetching</em></p> <p>A Scala library to fetch dependencies from Maven / Ivy repositories</p> <p><em>This is the documentation for version 1.1.0-SNAPSHOT</em>.</p> <p><em>coursier</em> is a dependency resolver / fetcher <em>à la</em> Maven / Ivy, entirely rewritten from scratch in Scala. It aims at being fast and easy to embed in other contexts. Its core embraces functional programming principles.</p> <p>It handles many features of the Maven model, and is able to fetch metadata and artifacts from both Maven and Ivy repositories. It handles parallel downloads out-of-the-box without resorting to global locks.</p> <p>It can be used <a href="../quick-start-sbt/index.html">as an sbt plugin</a>, making it handle most dependency resolutions in sbt.</p> <p>Its command-line tool allows to</p> 
-          <ul> 
-           <li>easily list the transitive dependencies of applications or libraries,</li> 
-           <li>download and list their artifacts,</li> 
-           <li>run applications published via Maven / Ivy repositories,</li> 
-           <li>and many other things.</li> 
-          </ul> <p>Lastly, it can be used as a library via its <a href="../quick-start-api/index.html">API</a> and has a Scala JS <a href="../scala-js/index.html">demo</a>.</p> </span>
+            </svg></a>Ivy support is poorly tested</h4> <p>The minimum was made for SBT plugins to be resolved fine (including dependencies between plugins, the possibility that some of them come from Maven repositories, with a peculiarities, classifiers - sources, javadoc - should be fine too). So it is likely that projects relying more heavily on Ivy features could run into the limitations of the current implementation.</p> <p>Any issue report related to that, illustrated with public Ivy repositories if possible, would be greatly appreciated.</p> <h4><a class="anchor" aria-hidden="true" id="important-sbt-plugin-might-mess-with-published-artifacts"></a><a href="index.html#important-sbt-plugin-might-mess-with-published-artifacts" aria-hidden="true" class="hash-link">
+            <svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16">
+             <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+            </svg></a><em>Important</em>: SBT plugin might mess with published artifacts</h4> <p>SBT seems to require the <code>update</code> command to generate a few metadata files later used by <code>publish</code>. If ever there's an issue with these, this might add discrepancies in the artifacts published with <code>publish</code> or <code>publishLocal</code>. Should you want to use the coursier SBT plugin while publishing artifacts at the same time, I'd recommend an extreme caution at first, like manually inspecting the metadata files and compare with previous ones, to ensure everything's fine.</p> <p>coursier publishes its artifacts with its own plugin enabled since version <code>1.0.0-M2</code> though, without any apparent problem.</p> <h4><a class="anchor" aria-hidden="true" id="no-wait-on-locked-file"></a><a href="index.html#no-wait-on-locked-file" aria-hidden="true" class="hash-link">
+            <svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16">
+             <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+            </svg></a>No wait on locked file</h4> <p>If ever resolution or artifact downloading stumbles upon a locked metadata or artifact in the cache, it will just fail, instead of waiting for the lock to be freed.</p> <h4><a class="anchor" aria-hidden="true" id="also"></a><a href="index.html#also" aria-hidden="true" class="hash-link">
+            <svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16">
+             <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+            </svg></a>Also</h4> <p>Plus the inherent amount of bugs arising in a young project :-)</p> </span>
         </div>
        </article>
       </div>
       <div class="docs-prevnext">
-       <a class="docs-next button" href="../quick-start-sbt/index.html"><span>Next</span><span class="arrow-next"> →</span></a>
+       <a class="docs-prev button" href="../extra/index.html"><span class="arrow-prev">← </span><span>Previous</span></a>
+       <a class="docs-next button" href="../faq/index.html"><span>Next</span><span class="arrow-next"> →</span></a>
       </div>
      </div>
     </div>
