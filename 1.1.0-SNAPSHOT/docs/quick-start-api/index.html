@@ -149,7 +149,7 @@
   <span class="hljs-string">"io.get-coursier"</span> %% <span class="hljs-string">"coursier"</span> % <span class="hljs-string">"1.1.0-SNAPSHOT"</span>,
   <span class="hljs-string">"io.get-coursier"</span> %% <span class="hljs-string">"coursier-cache"</span> % <span class="hljs-string">"1.1.0-SNAPSHOT"</span>
 )
-</code></pre> <p>s Add an import for coursier,</p> <pre><code class="hljs css language-scala"><span class="hljs-keyword">import</span> coursier._
+</code></pre> <p>Add an import for coursier,</p> <pre><code class="hljs css language-scala"><span class="hljs-keyword">import</span> coursier._
 </code></pre> <p>To resolve dependencies, first create a <code>Resolution</code> case class with your dependencies in it,</p> <pre><code class="hljs css language-scala"><span class="hljs-keyword">val</span> start = <span class="hljs-type">Resolution</span>(
   <span class="hljs-type">Set</span>(
     <span class="hljs-type">Dependency</span>(
