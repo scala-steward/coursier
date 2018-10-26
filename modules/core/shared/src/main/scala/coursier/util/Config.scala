@@ -8,7 +8,7 @@ object Config {
   // `configs` is assumed to be fully unfold
   def allDependenciesByConfig(
     res: Resolution,
-    depsByConfig: Map[Configuration, Set[Dependency]],
+    depsByConfig: Map[Configuration, Seq[Dependency]],
     configs: Map[Configuration, Set[Configuration]]
   ): Map[Configuration, Set[Dependency]] = {
 
@@ -31,7 +31,7 @@ object Config {
 
   def dependenciesWithConfig(
     res: Resolution,
-    depsByConfig: Map[Configuration, Set[Dependency]],
+    depsByConfig: Map[Configuration, Seq[Dependency]],
     configs: Map[Configuration, Set[Configuration]]
   ): Set[Dependency] =
     allDependenciesByConfig(res, depsByConfig, configs)

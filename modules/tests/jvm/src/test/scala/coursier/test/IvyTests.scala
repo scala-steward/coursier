@@ -115,7 +115,7 @@ object IvyTests extends TestSuite {
         val testsDep = dep.copy(attributes = Attributes(Type.jar, Classifier.tests))
 
         * - runner.withArtifacts(
-          deps = Set(dep, testsDep),
+          deps = Seq(dep, testsDep),
           extraRepos = Seq(repo),
           classifierOpt = None
         ) { artifacts =>

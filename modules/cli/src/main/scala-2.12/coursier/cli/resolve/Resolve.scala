@@ -287,7 +287,7 @@ object Resolve extends CaseApp[ResolveOptions] {
       _ = Output.printDependencies(params.output, params.resolution, deps)
 
       startRes = Resolution(
-        deps.toSet,
+        deps,
         forceVersions = params.resolution.forceVersion,
         filter = Some(dep => params.resolution.keepOptionalDependencies || !dep.optional),
         userActivations =

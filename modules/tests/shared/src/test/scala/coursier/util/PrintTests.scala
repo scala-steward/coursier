@@ -44,7 +44,7 @@ object PrintTests extends TestSuite {
       val junit = Module(org"junit", name"junit")
       val junitVersion = "4.10"
 
-      runner.resolve(Set(Dependency(junit, junitVersion))).map(result => {
+      runner.resolve(Seq(Dependency(junit, junitVersion))).map(result => {
         val hamcrest = Module(org"org.hamcrest", name"hamcrest-core")
         val hamcrestVersion = "1.1"
         val reverseTree = Print.reverseTree(Seq(Dependency(hamcrest, hamcrestVersion)),
