@@ -16,6 +16,9 @@ final case class ResolveOptions(
   @Short("T")
     reverseTree: Boolean = false,
 
+  @Help("Re-order dependencies, by organization / module name / attributes / version")
+    reorder: Boolean = true,
+
   @Recurse
     cacheOptions: shared.CacheOptions = shared.CacheOptions(),
 

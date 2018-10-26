@@ -1,7 +1,5 @@
 package coursier.cli.params
 
-import java.io.File
-
 import cats.data.ValidatedNel
 import cats.implicits._
 import coursier.cli.options.ResolveOptions
@@ -15,7 +13,8 @@ final case class ResolveParams(
   resolution: ResolutionParams,
   benchmark: Int,
   tree: Boolean,
-  reverseTree: Boolean
+  reverseTree: Boolean,
+  reorder: Boolean
 )
 
 object ResolveParams {
@@ -29,6 +28,7 @@ object ResolveParams {
     val benchmark = options.benchmark
     val tree = options.tree
     val reverseTree = options.reverseTree
+    val reorder = options.reorder
 
     (cacheV, outputV, repositoriesV, resolutionV).mapN {
       (cache, output, repositories, resolution) =>
@@ -39,7 +39,8 @@ object ResolveParams {
           resolution,
           benchmark,
           tree,
-          reverseTree
+          reverseTree,
+          reorder
         )
     }
   }
