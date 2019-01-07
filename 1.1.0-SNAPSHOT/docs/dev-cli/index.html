@@ -3,15 +3,15 @@
  <head>
   <meta charSet="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>sbt-shading · Coursier</title>
+  <title>CLI · Coursier</title>
   <meta name="viewport" content="width=device-width">
   <meta name="generator" content="Docusaurus">
-  <meta name="description" content="Pure Scala Artifact Fetching">
+  <meta name="description" content="coursier relies on [sbt-pack](https://github.com/xerial/sbt-pack) to build">
   <meta name="docsearch:language" content="en">
-  <meta property="og:title" content="sbt-shading · Coursier">
+  <meta property="og:title" content="CLI · Coursier">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://coursier.github.io/coursier/index.html">
-  <meta property="og:description" content="Pure Scala Artifact Fetching">
+  <meta property="og:description" content="coursier relies on [sbt-pack](https://github.com/xerial/sbt-pack) to build">
   <meta name="twitter:card" content="summary">
   <link rel="shortcut icon" href="../../undefined">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
@@ -44,7 +44,7 @@
          <div class="navToggle" id="navToggler">
           <i></i>
          </div>
-         <h2><i>›</i><span>sbt plugins</span></h2>
+         <h2><i>›</i><span>Development</span></h2>
          <div class="tocToggler" id="tocToggler">
           <i class="icon-toc"></i>
          </div>
@@ -63,7 +63,6 @@
           <h3 class="navGroupCategoryTitle">sbt plugins</h3>
           <ul>
            <li class="navListItem"><a class="navItem" href="../sbt-coursier">sbt-coursier</a></li>
-           <li class="navListItem navListItemActive"><a class="navItem" href="">sbt-shading</a></li>
            <li class="navListItem"><a class="navItem" href="../sbt-pgp-coursier">sbt-pgp-coursier</a></li>
           </ul>
          </div>
@@ -99,6 +98,7 @@
          <div class="navGroup">
           <h3 class="navGroupCategoryTitle">Development</h3>
           <ul>
+           <li class="navListItem navListItemActive"><a class="navItem" href="">CLI</a></li>
            <li class="navListItem"><a class="navItem" href="../dev-website">Website</a></li>
           </ul>
          </div>
@@ -147,22 +147,37 @@
      <div class="wrapper">
       <div class="post">
        <header class="postHeader">
-        <a class="edit-page-link button" href="https://github.com/coursier/coursier/edit/master/doc/docs/sbt-shading.md" target="_blank" rel="noreferrer noopener">Edit</a>
-        <h1 class="postHeaderTitle">sbt-shading</h1>
+        <a class="edit-page-link button" href="https://github.com/coursier/coursier/edit/master/doc/docs/dev-cli.md" target="_blank" rel="noreferrer noopener">Edit</a>
+        <h1 class="postHeaderTitle">CLI</h1>
        </header>
        <article>
         <div>
-         <span></span>
+         <span><p>coursier relies on <a href="https://github.com/xerial/sbt-pack">sbt-pack</a> to build its CLI from sources. <a href="https://github.com/xerial/sbt-pack">sbt-pack</a> conveniently allows to build a launcher for the CLI, either once, or continuously, while watching sources.</p> <p>Note that this only applies during development, the final <code>coursier</code> launcher generated upon each release relies on the <code>coursier bootstrap</code> command, itself pulling a proguarded assembly of the cli module of coursier.</p> <h2><a class="anchor" aria-hidden="true" id="batch-mode"></a><a href="index.html#batch-mode" aria-hidden="true" class="hash-link">
+            <svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16">
+             <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+            </svg></a>Batch mode</h2> <p>From freshly cloned sources, run</p> <pre><code class="hljs css language-bash">$ sbt cli/pack
+</code></pre> <p>to build a CLI launcher from sources. This builds a <code>modules/cli/target/pack</code> directory via <a href="https://github.com/xerial/sbt-pack">sbt-pack</a>. This directory contains a coursier launcher, that can be used like</p> <pre><code class="hljs css language-bash">$ modules/cli/target/pack/bin/coursier launch io.get-coursier:<span class="hljs-built_in">echo</span>:1.0.1 -- foo
+</code></pre> <h2><a class="anchor" aria-hidden="true" id="continuous-mode"></a><a href="index.html#continuous-mode" aria-hidden="true" class="hash-link">
+            <svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16">
+             <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+            </svg></a>Continuous mode</h2> <p>In a terminal window, run</p> <pre><code class="hljs css language-bash">sbt <span class="hljs-string">"~cli/pack"</span>
+</code></pre> <p>This builds a <code>modules/cli/target/pack</code> directory like above, then watches the sources of coursier for changes, and re-builds that directory upon changes.</p> <p>You can then run the coursier CLI from another terminal, like</p> <pre><code class="hljs css language-bash">$ modules/cli/target/pack/bin/coursier launch io.get-coursier:<span class="hljs-built_in">echo</span>:1.0.1 -- foo
+</code></pre> </span>
         </div>
        </article>
       </div>
       <div class="docs-prevnext">
-       <a class="docs-prev button" href="../sbt-coursier"><span class="arrow-prev">← </span><span>Previous</span></a>
-       <a class="docs-next button" href="../sbt-pgp-coursier"><span>Next</span><span class="arrow-next"> →</span></a>
+       <a class="docs-prev button" href="../faq"><span class="arrow-prev">← </span><span>Previous</span></a>
+       <a class="docs-next button" href="../dev-website"><span>Next</span><span class="arrow-next"> →</span></a>
       </div>
      </div>
     </div>
-    <nav class="onPageNav docOnPageNav"></nav>
+    <nav class="onPageNav docOnPageNav">
+     <ul class="toc-headings">
+      <li><a href="index.html#batch-mode">Batch mode</a></li>
+      <li><a href="index.html#continuous-mode">Continuous mode</a></li>
+     </ul>
+    </nav>
    </div>
    <footer class="nav-footer" id="footer">
     <section class="sitemap">
@@ -182,7 +197,7 @@
      </div>
     </section>
     <section class="copyright">
-     Copyright © 2019 Alexandre Archambault and coursier contributors
+     Copyright © 2019 coursier contributors
     </section>
    </footer>
   </div>

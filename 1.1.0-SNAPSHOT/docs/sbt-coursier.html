@@ -6,12 +6,12 @@
   <title>sbt-coursier · Coursier</title>
   <meta name="viewport" content="width=device-width">
   <meta name="generator" content="Docusaurus">
-  <meta name="description" content="Currently requires sbt 1.x. See">
+  <meta name="description" content="`sbt-coursier` ensures one's dependencies are fetched via coursier rather">
   <meta name="docsearch:language" content="en">
   <meta property="og:title" content="sbt-coursier · Coursier">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://coursier.github.io/coursier/index.html">
-  <meta property="og:description" content="Currently requires sbt 1.x. See">
+  <meta property="og:description" content="`sbt-coursier` ensures one's dependencies are fetched via coursier rather">
   <meta name="twitter:card" content="summary">
   <link rel="shortcut icon" href="../undefined">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
@@ -63,7 +63,6 @@
           <h3 class="navGroupCategoryTitle">sbt plugins</h3>
           <ul>
            <li class="navListItem navListItemActive"><a class="navItem" href="sbt-coursier">sbt-coursier</a></li>
-           <li class="navListItem"><a class="navItem" href="sbt-shading">sbt-shading</a></li>
            <li class="navListItem"><a class="navItem" href="sbt-pgp-coursier">sbt-pgp-coursier</a></li>
           </ul>
          </div>
@@ -99,6 +98,7 @@
          <div class="navGroup">
           <h3 class="navGroupCategoryTitle">Development</h3>
           <ul>
+           <li class="navListItem"><a class="navItem" href="dev-cli">CLI</a></li>
            <li class="navListItem"><a class="navItem" href="dev-website">Website</a></li>
           </ul>
          </div>
@@ -152,7 +152,7 @@
        </header>
        <article>
         <div>
-         <span><p>Currently requires sbt 1.x. See <a href="https://github.com/coursier/coursier/tree/series/1.0.x">coursier versions 1.0.x</a> for sbt 0.13.x.</p> <p>The sbt plugin can be enabled either on a per-project basis (recommended), or globally.</p> <p>It mainly overrides the <code>update</code>, <code>updateClassifiers</code>, and <code>updateSbtClassifiers</code> tasks. It does not handle publishing for now.</p> <h2><a class="anchor" aria-hidden="true" id="setup"></a><a href="sbt-coursier.html#setup" aria-hidden="true" class="hash-link">
+         <span><p><code>sbt-coursier</code> ensures one's dependencies are fetched via coursier rather than by sbt itself, that relies on its own custom version of Ivy. When properly set up (see below), coursier can also be used to fetch most sbt plugins. Note that sbt-coursier itself is still fetched by sbt. Also note that the JARs of sbt, when one launches sbt for the first time, are also still fetched by sbt itself.</p> <p>It currently requires sbt 1.x. See <a href="https://github.com/coursier/coursier/tree/series/1.0.x">coursier versions 1.0.x</a> for sbt 0.13.x.</p> <p>The sbt plugin can be enabled either on a per-project basis (recommended), or globally.</p> <p>It mainly overrides the <code>update</code>, <code>updateClassifiers</code>, and <code>updateSbtClassifiers</code> tasks. It does not handle publishing for now.</p> <h2><a class="anchor" aria-hidden="true" id="setup"></a><a href="sbt-coursier.html#setup" aria-hidden="true" class="hash-link">
             <svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16">
              <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
             </svg></a>Setup</h2> <h3><a class="anchor" aria-hidden="true" id="per-project"></a><a href="sbt-coursier.html#per-project" aria-hidden="true" class="hash-link">
@@ -177,7 +177,7 @@
       </div>
       <div class="docs-prevnext">
        <a class="docs-prev button" href="quick-start-api"><span class="arrow-prev">← </span><span>Previous</span></a>
-       <a class="docs-next button" href="sbt-shading"><span>Next</span><span class="arrow-next"> →</span></a>
+       <a class="docs-next button" href="sbt-pgp-coursier"><span>Next</span><span class="arrow-next"> →</span></a>
       </div>
      </div>
     </div>
@@ -209,7 +209,7 @@
      </div>
     </section>
     <section class="copyright">
-     Copyright © 2019 Alexandre Archambault and coursier contributors
+     Copyright © 2019 coursier contributors
     </section>
    </footer>
   </div>
