@@ -97,6 +97,12 @@
           </ul>
          </div>
          <div class="navGroup">
+          <h3 class="navGroupCategoryTitle">Development</h3>
+          <ul>
+           <li class="navListItem"><a class="navItem" href="../dev-website">Website</a></li>
+          </ul>
+         </div>
+         <div class="navGroup">
           <h3 class="navGroupCategoryTitle">About</h3>
           <ul>
            <li class="navListItem"><a class="navItem" href="../motivations">Why?</a></li>
@@ -180,7 +186,7 @@
 <span class="hljs-keyword">val</span> localArtifacts: <span class="hljs-type">Seq</span>[<span class="hljs-type">Either</span>[<span class="hljs-type">FileError</span>, <span class="hljs-type">File</span>]] =
   <span class="hljs-type">Gather</span>[<span class="hljs-type">Task</span>].gather(
     resolution
-      .artifacts
+      .artifacts()
       .map(<span class="hljs-type">Cache</span>.file[<span class="hljs-type">Task</span>](_).run)
   ).unsafeRun()
 </code></pre> <p>See <a href="../api">the dedicated page</a> for more details.</p> </span>

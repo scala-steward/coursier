@@ -97,6 +97,12 @@
           </ul>
          </div>
          <div class="navGroup">
+          <h3 class="navGroupCategoryTitle">Development</h3>
+          <ul>
+           <li class="navListItem"><a class="navItem" href="../dev-website">Website</a></li>
+          </ul>
+         </div>
+         <div class="navGroup">
           <h3 class="navGroupCategoryTitle">About</h3>
           <ul>
            <li class="navListItem"><a class="navItem" href="../motivations">Why?</a></li>
@@ -179,14 +185,14 @@
 </code></pre> <p>The monad used by <code>Fetch.from</code> is <code>coursier.util.Task</code>, but the resolution process is not tied to a particular monad - any stack-safe monad would do.</p> <p>With this <code>fetch</code> method, we can now go on with the resolution. Calling <code>process</code> on <code>start</code> above gives a <a href="https://github.com/coursier/coursier/blob/master/core/shared/src/main/scala/coursier/core/ResolutionProcess.scala"><code>ResolutionProcess</code></a>, that drives the resolution. It is loosely inspired by the <code>Process</code> of <a href="http://fs2.io/">fs2</a> (formerly scalaz-stream). It is an immutable structure, that represents the various states the resolution process can be in.</p> <p>Its method <code>current</code> gives the current <code>Resolution</code>. Calling <code>isDone</code> on the latter says whether the resolution is done or not.</p> <p>The <code>next</code> method, that expects a <code>fetch</code> method like the one above, gives the "next" state of the resolution process, wrapped in the monad of the <code>fetch</code> method. It allows to do one resolution step.</p> <p>Lastly, the <code>run</code> method runs the whole resolution until its end. It expects a <code>fetch</code> method too, and will make at most <code>maxIterations</code> steps (50 by default), and return the "final" resolution state, wrapped in the monad of <code>fetch</code>. One should check that the <code>Resolution</code> it returns is done (<code>isDone</code>) - the contrary means that <code>maxIterations</code> were reached, likely signaling an issue, unless the underlying resolution is particularly complex, in which case <code>maxIterations</code> could be increased.</p> <p>Let's run the whole resolution,</p> <pre><code class="hljs css language-scala"><span class="hljs-keyword">import</span> scala.concurrent.<span class="hljs-type">ExecutionContext</span>.<span class="hljs-type">Implicits</span>.global
 
 <span class="hljs-keyword">val</span> resolution = start.process.run(fetch).unsafeRun()
-</code></pre> <p>To get additional feedback during the resolution, we can give the <code>Cache.fetch</code> method above a <a href="https://github.com/coursier/coursier/blob/cf269c6895e19f2d590f08811406724304332950/cache/src/main/scala/coursier/Cache.scala#L484-L490"><code>Cache.Logger</code></a>.</p> <p>By default, downloads happen in a global fixed thread pool (with 6 threads, allowing for 6 parallel downloads), but you can supply your own thread pool to <code>Cache.fetch</code>.</p> <p>Now that the resolution is done, we can check for errors in</p> <pre><code class="hljs css language-scala"><span class="hljs-keyword">val</span> errors: <span class="hljs-type">Seq</span>[((<span class="hljs-type">Module</span>, <span class="hljs-type">String</span>), <span class="hljs-type">Seq</span>[<span class="hljs-type">String</span>])] = resolution.metadataErrors
+</code></pre> <p>To get additional feedback during the resolution, we can give the <code>Cache.fetch</code> method above a <a href="https://github.com/coursier/coursier/blob/cf269c6895e19f2d590f08811406724304332950/cache/src/main/scala/coursier/Cache.scala#L484-L490"><code>Cache.Logger</code></a>.</p> <p>By default, downloads happen in a global fixed thread pool (with 6 threads, allowing for 6 parallel downloads), but you can supply your own thread pool to <code>Cache.fetch</code>.</p> <p>Now that the resolution is done, we can check for errors in</p> <pre><code class="hljs css language-scala"><span class="hljs-keyword">val</span> errors: <span class="hljs-type">Seq</span>[((<span class="hljs-type">Module</span>, <span class="hljs-type">String</span>), <span class="hljs-type">Seq</span>[<span class="hljs-type">String</span>])] = resolution.errors
 </code></pre> <p>These would mean that the resolution wasn't able to get metadata about some dependencies.</p> <p>We can also check for version conflicts, in</p> <pre><code class="hljs css language-scala"><span class="hljs-keyword">val</span> conflicts: <span class="hljs-type">Set</span>[<span class="hljs-type">Dependency</span>] = resolution.conflicts
 </code></pre> <p>which are dependencies whose versions could not be unified.</p> <p>Then, if all went well, we can fetch and get local copies of the artifacts themselves (the JARs) with</p> <pre><code class="hljs css language-scala"><span class="hljs-keyword">import</span> java.io.<span class="hljs-type">File</span>
 <span class="hljs-keyword">import</span> coursier.util.<span class="hljs-type">Gather</span>
 
 <span class="hljs-keyword">val</span> localArtifacts: <span class="hljs-type">Seq</span>[<span class="hljs-type">Either</span>[<span class="hljs-type">FileError</span>, <span class="hljs-type">File</span>]] =
   <span class="hljs-type">Gather</span>[<span class="hljs-type">Task</span>].gather(
-    resolution.artifacts.map(<span class="hljs-type">Cache</span>.file[<span class="hljs-type">Task</span>](_).run)
+    resolution.artifacts().map(<span class="hljs-type">Cache</span>.file[<span class="hljs-type">Task</span>](_).run)
   ).unsafeRun()
 </code></pre> <p>We're using the <code>Cache.file</code> method, that can also be given a <code>Logger</code> (for more feedback) and a custom thread pool.</p> </span>
         </div>
